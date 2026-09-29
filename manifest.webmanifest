@@ -1,0 +1,9 @@
+{
+  "name": "LIRA NOTES",
+  "short_name": "LIRA NOTES",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f5f7",
+  "theme_color": "#f2b705",
+  "lang": "pt-BR"
+}
