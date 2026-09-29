@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#f7f7f8" />
+  <title>LIRA NOTES</title>
+  <meta name="description" content="LIRA NOTES — notas e conhecimento do Grupo Lira." />
+  <link rel="manifest" href="manifest.webmanifest" />
+    <style>
+:root{--bg:#f5f5f7;--panel:#fff;--sidebar:#f0f0f2;--line:#dddde2;--text:#1d1d1f;--muted:#77777f;--accent:#d19a00;--accent2:#f2b705;--hover:#e6e6e9;--selected:#fff4c2;--danger:#b42318;--shadow:0 8px 28px rgba(0,0,0,.08)}
+[data-theme="dark"]{--bg:#121214;--panel:#1c1c1e;--sidebar:#171719;--line:#303034;--text:#f5f5f7;--muted:#a1a1a8;--accent:#ffc928;--accent2:#d8a800;--hover:#29292d;--selected:#4b3b0a;--danger:#ff6b63;--shadow:0 8px 28px rgba(0,0,0,.35)}
+*{box-sizing:border-box}html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:var(--bg)}button,input,textarea,select{font:inherit;color:inherit}.app-shell{display:grid;grid-template-columns:250px 330px minmax(0,1fr);height:100vh;overflow:hidden}.sidebar,.note-list-panel,.editor-panel{min-width:0}.sidebar{background:var(--sidebar);border-right:1px solid var(--line);padding:18px 12px;display:flex;flex-direction:column;gap:14px}.brand-row{display:flex;align-items:center;gap:10px;padding:0 7px 4px}.brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(140deg,var(--accent2),var(--accent));display:grid;place-items:center;font-weight:800;color:#111}.brand{font-size:15px;font-weight:800;letter-spacing:.04em}.brand-sub{font-size:11px;color:var(--muted);margin-top:2px}.primary{border:0;border-radius:10px;padding:10px 12px;background:var(--accent2);color:#17130a;font-weight:750;cursor:pointer}.nav-list{display:flex;flex-direction:column;gap:3px}.nav-item{width:100%;border:0;background:transparent;border-radius:9px;padding:8px 10px;display:grid;grid-template-columns:22px 1fr auto;text-align:left;align-items:center;cursor:pointer}.nav-item:hover{background:var(--hover)}.nav-item.active{background:var(--selected)}.nav-item b{font-size:11px;color:var(--muted)}.section-title{display:flex;justify-content:space-between;align-items:center;padding:8px 9px 2px;font-size:11px;font-weight:800;color:var(--muted);letter-spacing:.08em}.section-title button,.ghost,.icon-btn{border:0;background:transparent;cursor:pointer}.section-title button{font-size:18px;color:var(--muted)}.sidebar-bottom{margin-top:auto;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding:12px 5px 0;color:var(--muted);font-size:12px}.ghost{padding:5px}.note-list-panel{background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column}.list-header{padding:18px 18px 10px;display:flex;justify-content:space-between;align-items:center}.list-header h1{font-size:20px;margin:0}.list-header p{font-size:12px;color:var(--muted);margin:3px 0 0}.icon-btn{width:36px;height:36px;border-radius:9px;font-size:18px}.icon-btn:hover{background:var(--hover)}.danger{color:var(--danger)}.search-wrap{padding:0 14px 10px}.search-wrap input{width:100%;border:1px solid var(--line);background:var(--bg);padding:9px 12px;border-radius:9px;outline:none}.note-list{overflow:auto;padding:0 8px 14px}.note-card{padding:12px 12px;border-radius:10px;cursor:pointer;margin:2px 0}.note-card:hover{background:var(--hover)}.note-card.active{background:var(--selected)}.note-card-title{display:flex;gap:8px;align-items:center;font-weight:720;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.note-card-title span:first-child{overflow:hidden;text-overflow:ellipsis}.star{margin-left:auto;color:var(--accent)}.note-preview{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:5px}.note-date{font-size:10px;color:var(--muted);margin-top:7px}.editor-panel{background:var(--panel);position:relative}.empty-state{height:100%;display:grid;place-content:center;text-align:center;color:var(--muted);padding:30px}.empty-icon{font-size:46px}.empty-state h2{color:var(--text);margin:10px 0 5px}.empty-state p{margin:0}.editor{height:100%;display:flex;flex-direction:column;padding:18px 28px}.hidden{display:none!important}.editor-toolbar{display:flex;gap:8px;align-items:center}.editor-toolbar select{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:7px 10px;max-width:220px}.toolbar-spacer{flex:1}.title-input{border:0;background:transparent;outline:none;font-size:30px;font-weight:760;margin:18px 0 5px;padding:0}.meta{font-size:11px;color:var(--muted);display:flex;gap:7px;margin-bottom:14px}.content-input{flex:1;resize:none;border:0;outline:none;background:transparent;line-height:1.65;font-size:16px;padding:0 0 40px;min-height:0}.sidebar-collapsed{grid-template-columns:0 330px minmax(0,1fr)}.sidebar-collapsed .sidebar{overflow:hidden;padding:0;border:0}@media(max-width:900px){.app-shell{grid-template-columns:210px 280px minmax(0,1fr)}.editor{padding:16px 20px}.title-input{font-size:26px}}@media(max-width:720px){.app-shell{grid-template-columns:1fr}.sidebar{display:none}.note-list-panel{border:0}.editor-panel{position:fixed;inset:0;transform:translateX(100%);transition:.2s}.editor-panel.mobile-open{transform:translateX(0)}.editor-toolbar:before{content:'‹';font-size:30px;cursor:pointer;margin-right:8px}}
+.auth-screen{position:fixed;inset:0;z-index:100;background:linear-gradient(145deg,var(--bg),var(--sidebar));display:grid;place-items:center;padding:24px}.auth-card{width:min(430px,100%);background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:32px;box-shadow:var(--shadow)}.auth-logo{margin-bottom:18px}.auth-card h1{margin:0 0 8px;font-size:26px}.auth-card p{color:var(--muted);line-height:1.5;margin:0 0 22px}.auth-card form{display:grid;gap:10px}.auth-card label{font-size:12px;font-weight:700;color:var(--muted)}.auth-card input{width:100%;border:1px solid var(--line);background:var(--bg);padding:11px 12px;border-radius:10px;outline:none}.auth-submit{margin-top:5px}.auth-message{min-height:20px;margin-top:14px;font-size:12px;color:var(--muted);line-height:1.45}.app-locked{filter:blur(4px);pointer-events:none;user-select:none}.sidebar-actions{display:flex;gap:4px;align-items:center}.sync-error{color:var(--danger)!important}
+
+</style>
+</head>
+<body>
+<div id="authScreen" class="auth-screen">
+  <div class="auth-card">
+    <div class="brand-mark auth-logo">L</div>
+    <h1>LIRA NOTES</h1>
+    <p>Entre com o e-mail do Grupo Lira. Você receberá um link seguro para acessar suas notas.</p>
+    <form id="authForm">
+      <label for="authEmail">E-mail</label>
+      <input id="authEmail" type="email" value="gruposlira@gmail.com" autocomplete="email" required />
+      <button class="primary auth-submit" type="submit">Enviar link de acesso</button>
+    </form>
+    <div id="authMessage" class="auth-message"></div>
+  </div>
+</div>
+
+<div id="appShell" class="app-shell app-locked" aria-hidden="true">
+  <aside class="sidebar">
+    <div class="brand-row"><div class="brand-mark">L</div><div><div class="brand">LIRA NOTES</div><div class="brand-sub">Grupo Lira</div></div></div>
+    <button id="newNoteBtn" class="primary">＋ Nova Nota</button>
+    <nav id="smartFolders" class="nav-list">
+      <button class="nav-item active" data-view="all">▤ <span>Todas as notas</span><b id="countAll">0</b></button>
+      <button class="nav-item" data-view="favorites">★ <span>Favoritos</span><b id="countFavorites">0</b></button>
+      <button class="nav-item" data-view="recent">◷ <span>Recentes</span></button>
+      <button class="nav-item" data-view="trash">⌫ <span>Lixeira</span><b id="countTrash">0</b></button>
+    </nav>
+    <div class="section-title"><span>PASTAS</span><button id="newFolderBtn" title="Nova pasta">＋</button></div>
+    <div id="folders" class="nav-list folders"></div>
+    <div class="sidebar-bottom">
+      <div class="sidebar-actions"><button id="themeBtn" class="ghost">◐ Tema</button><button id="logoutBtn" class="ghost">Sair</button></div>
+      <span id="saveState">Sincronizado</span>
+    </div>
+  </aside>
+
+  <section class="note-list-panel">
+    <header class="list-header">
+      <div><h1 id="viewTitle">Todas as notas</h1><p id="viewSubtitle">0 notas</p></div>
+      <button id="collapseBtn" class="icon-btn" title="Alternar barra lateral">☰</button>
+    </header>
+    <div class="search-wrap"><input id="searchInput" type="search" placeholder="Pesquisar notas" autocomplete="off" /></div>
+    <div id="noteList" class="note-list"></div>
+  </section>
+
+  <main class="editor-panel">
+    <div id="emptyState" class="empty-state">
+      <div class="empty-icon">✎</div><h2>Selecione uma nota</h2><p>Ou crie uma nova nota para começar.</p>
+    </div>
+    <div id="editor" class="editor hidden">
+      <div class="editor-toolbar">
+        <select id="folderSelect" title="Pasta"></select>
+        <div class="toolbar-spacer"></div>
+        <button id="favoriteBtn" class="icon-btn" title="Favoritar">☆</button>
+        <button id="deleteBtn" class="icon-btn danger" title="Mover para lixeira">⌫</button>
+      </div>
+      <input id="titleInput" class="title-input" placeholder="Título" />
+      <div class="meta"><span id="editedAt"></span><span>•</span><span id="charCount">0 caracteres</span></div>
+      <textarea id="contentInput" class="content-input" placeholder="Comece a escrever..."></textarea>
+    </div>
+  </main>
+</div>
+<script>
+window.LIRA_CONFIG = Object.freeze({
+  SUPABASE_URL: 'https://liwivdnosoeupkargrmx.supabase.co',
+  SUPABASE_PUBLISHABLE_KEY: 'sb_publishable_WSiBOzeq7i26YDQwFdkvUA_h6xhFzxl'
+});
+
+</script>
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/+esm';
+
+const config = window.LIRA_CONFIG || {};
+if (!config.SUPABASE_URL || !config.SUPABASE_PUBLISHABLE_KEY) {
+  throw new Error('Configuração do LIRA NOTES ausente.');
+}
+
+const supabase = createClient(config.SUPABASE_URL, config.SUPABASE_PUBLISHABLE_KEY, {
+  auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+});
+
+const state = { notes: [], folders: [], theme: localStorage.getItem('lira-notes-theme') || 'light' };
+let currentView = 'all';
+let currentFolder = null;
+let selectedId = null;
+let saveTimer = null;
+let currentUser = null;
+const $ = id => document.getElementById(id);
+const els = {
+  authScreen: $('authScreen'), authForm: $('authForm'), authEmail: $('authEmail'), authMessage: $('authMessage'), appShell: $('appShell'),
+  newNote: $('newNoteBtn'), newFolder: $('newFolderBtn'), folders: $('folders'), list: $('noteList'), search: $('searchInput'),
+  viewTitle: $('viewTitle'), viewSubtitle: $('viewSubtitle'), empty: $('emptyState'), editor: $('editor'), title: $('titleInput'),
+  content: $('contentInput'), folderSelect: $('folderSelect'), favorite: $('favoriteBtn'), del: $('deleteBtn'), editedAt: $('editedAt'),
+  charCount: $('charCount'), saveState: $('saveState'), theme: $('themeBtn'), logout: $('logoutBtn'), collapse: $('collapseBtn'),
+  countAll: $('countAll'), countFavorites: $('countFavorites'), countTrash: $('countTrash')
+};
+
+document.documentElement.dataset.theme = state.theme;
+
+function fmt(ts) {
+  if (!ts) return '';
+  return new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(ts));
+}
+function activeNotes() { return state.notes.filter(n => !n.trashed); }
+function filtered() {
+  let notes = state.notes.slice();
+  notes = currentView === 'trash' ? notes.filter(n => n.trashed) : notes.filter(n => !n.trashed);
+  if (currentView === 'favorites') notes = notes.filter(n => n.favorite);
+  if (currentView === 'recent') notes = notes.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)).slice(0, 20);
+  if (currentView === 'folder') notes = notes.filter(n => n.folder_id === currentFolder);
+  const q = els.search.value.trim().toLowerCase();
+  if (q) notes = notes.filter(n => `${n.title} ${n.content}`.toLowerCase().includes(q));
+  return notes.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+}
+function titleForView() {
+  if (currentView === 'all') return 'Todas as notas';
+  if (currentView === 'favorites') return 'Favoritos';
+  if (currentView === 'recent') return 'Recentes';
+  if (currentView === 'trash') return 'Lixeira';
+  return state.folders.find(x => x.id === currentFolder)?.name || 'Pasta';
+}
+function renderFolders() {
+  els.folders.innerHTML = '';
+  state.folders.forEach(f => {
+    const b = document.createElement('button');
+    b.className = 'nav-item' + (currentView === 'folder' && currentFolder === f.id ? ' active' : '');
+    b.innerHTML = `<span>▱</span><span></span><b>${activeNotes().filter(n => n.folder_id === f.id).length}</b>`;
+    b.children[1].textContent = f.name;
+    b.onclick = () => { currentView = 'folder'; currentFolder = f.id; selectNav(); renderAll(); };
+    els.folders.appendChild(b);
+  });
+  els.folderSelect.innerHTML = '<option value="">Sem pasta</option>' + state.folders.map(f => `<option value="${f.id}">${escapeHtml(f.name)}</option>`).join('');
+}
+function renderCounts() {
+  els.countAll.textContent = activeNotes().length;
+  els.countFavorites.textContent = activeNotes().filter(n => n.favorite).length;
+  els.countTrash.textContent = state.notes.filter(n => n.trashed).length;
+}
+function renderList() {
+  const notes = filtered();
+  els.viewTitle.textContent = titleForView();
+  els.viewSubtitle.textContent = `${notes.length} ${notes.length === 1 ? 'nota' : 'notas'}`;
+  els.list.innerHTML = '';
+  notes.forEach(n => {
+    const card = document.createElement('div');
+    card.className = 'note-card' + (n.id === selectedId ? ' active' : '');
+    const firstLine = (n.content || '').replace(/\s+/g, ' ').trim() || 'Sem conteúdo';
+    card.innerHTML = `<div class="note-card-title"><span></span>${n.favorite ? '<span class="star">★</span>' : ''}</div><div class="note-preview"></div><div class="note-date">${fmt(n.updated_at)}</div>`;
+    card.querySelector('.note-card-title span').textContent = n.title || 'Sem título';
+    card.querySelector('.note-preview').textContent = firstLine;
+    card.onclick = () => selectNote(n.id);
+    els.list.appendChild(card);
+  });
+  if (selectedId && !notes.some(n => n.id === selectedId)) { selectedId = null; renderEditor(); }
+}
+function renderEditor() {
+  const n = state.notes.find(x => x.id === selectedId);
+  if (!n) {
+    els.empty.classList.remove('hidden'); els.editor.classList.add('hidden');
+    document.querySelector('.editor-panel').classList.remove('mobile-open'); return;
+  }
+  els.empty.classList.add('hidden'); els.editor.classList.remove('hidden');
+  els.title.value = n.title || ''; els.content.value = n.content || ''; els.folderSelect.value = n.folder_id || '';
+  els.favorite.textContent = n.favorite ? '★' : '☆'; els.editedAt.textContent = 'Editado ' + fmt(n.updated_at);
+  els.charCount.textContent = `${(n.content || '').length} caracteres`;
+  document.querySelector('.editor-panel').classList.add('mobile-open');
+}
+function selectNote(id) { selectedId = id; renderList(); renderEditor(); }
+function selectNav() {
+  document.querySelectorAll('#smartFolders .nav-item').forEach(b => b.classList.toggle('active', b.dataset.view === currentView));
+  renderFolders();
+}
+function renderAll() { renderFolders(); renderCounts(); renderList(); renderEditor(); }
+function setSync(text, error = false) { els.saveState.textContent = text; els.saveState.classList.toggle('sync-error', error); }
+
+async function loadData() {
+  setSync('Sincronizando…');
+  const [{ data: folders, error: folderError }, { data: notes, error: notesError }] = await Promise.all([
+    supabase.from('folders').select('*').order('created_at', { ascending: true }),
+    supabase.from('notes').select('*').order('updated_at', { ascending: false })
+  ]);
+  if (folderError || notesError) throw folderError || notesError;
+  state.folders = folders || []; state.notes = notes || [];
+  if (!state.folders.length) await seedWorkspace();
+  setSync('Sincronizado'); renderAll();
+}
+async function seedWorkspace() {
+  const { data: folders, error } = await supabase.from('folders').insert([
+    { name: 'Pessoal' }, { name: 'TV Attual' }, { name: 'Projetos' }
+  ]).select();
+  if (error) throw error;
+  state.folders = folders || [];
+  const first = state.folders[0];
+  const { data: note, error: noteError } = await supabase.from('notes').insert({
+    folder_id: first?.id || null,
+    title: 'Bem-vindo ao LIRA NOTES',
+    content: 'Este é o primeiro MVP do sistema de notas do Grupo Lira.\n\nUse a lateral esquerda para navegar, escolha uma nota no centro e edite o conteúdo completo à direita. O salvamento é automático e as notas ficam sincronizadas no Supabase.',
+    favorite: true
+  }).select().single();
+  if (noteError) throw noteError;
+  state.notes = note ? [note] : [];
+}
+function scheduleSave(id) {
+  setSync('Salvando…'); clearTimeout(saveTimer);
+  saveTimer = setTimeout(async () => {
+    const n = state.notes.find(x => x.id === id); if (!n) return;
+    const payload = { title: n.title, content: n.content, folder_id: n.folder_id || null, favorite: !!n.favorite, trashed: !!n.trashed };
+    const { data, error } = await supabase.from('notes').update(payload).eq('id', id).select().single();
+    if (error) { console.error(error); setSync('Erro ao salvar', true); return; }
+    Object.assign(n, data); setSync('Sincronizado'); renderList();
+  }, 450);
+}
+function updateSelected(mutator) {
+  const n = state.notes.find(x => x.id === selectedId); if (!n) return;
+  mutator(n); n.updated_at = new Date().toISOString();
+  els.editedAt.textContent = 'Editado ' + fmt(n.updated_at); els.charCount.textContent = `${(n.content || '').length} caracteres`;
+  scheduleSave(n.id);
+}
+
+els.newNote.onclick = async () => {
+  const folderId = currentView === 'folder' ? currentFolder : (state.folders[0]?.id || null);
+  const { data: n, error } = await supabase.from('notes').insert({ title: 'Nova nota', content: '', folder_id: folderId }).select().single();
+  if (error) return setSync('Erro ao criar', true);
+  state.notes.unshift(n); selectedId = n.id; currentView = 'all'; selectNav(); renderAll();
+  setTimeout(() => { els.title.focus(); els.title.select(); }, 0);
+};
+els.newFolder.onclick = async () => {
+  const name = prompt('Nome da nova pasta:'); if (!name?.trim()) return;
+  const { data, error } = await supabase.from('folders').insert({ name: name.trim() }).select().single();
+  if (error) return setSync('Erro ao criar pasta', true);
+  state.folders.push(data); renderAll();
+};
+els.search.oninput = renderList;
+els.title.oninput = () => updateSelected(n => n.title = els.title.value);
+els.content.oninput = () => updateSelected(n => n.content = els.content.value);
+els.folderSelect.onchange = () => updateSelected(n => n.folder_id = els.folderSelect.value || null);
+els.favorite.onclick = () => updateSelected(n => { n.favorite = !n.favorite; els.favorite.textContent = n.favorite ? '★' : '☆'; });
+els.del.onclick = async () => {
+  const n = state.notes.find(x => x.id === selectedId); if (!n) return;
+  if (n.trashed) {
+    if (!confirm('Excluir definitivamente esta nota?')) return;
+    const { error } = await supabase.from('notes').delete().eq('id', n.id); if (error) return setSync('Erro ao excluir', true);
+    state.notes = state.notes.filter(x => x.id !== n.id);
+  } else {
+    const { data, error } = await supabase.from('notes').update({ trashed: true }).eq('id', n.id).select().single();
+    if (error) return setSync('Erro ao mover', true); Object.assign(n, data);
+  }
+  selectedId = null; renderAll();
+};
+els.theme.onclick = () => { state.theme = state.theme === 'dark' ? 'light' : 'dark'; document.documentElement.dataset.theme = state.theme; localStorage.setItem('lira-notes-theme', state.theme); };
+els.logout.onclick = async () => { await supabase.auth.signOut(); };
+els.collapse.onclick = () => document.querySelector('.app-shell').classList.toggle('sidebar-collapsed');
+document.querySelectorAll('#smartFolders .nav-item').forEach(b => b.onclick = () => { currentView = b.dataset.view; currentFolder = null; selectNav(); renderAll(); });
+document.querySelector('.editor-toolbar').addEventListener('click', e => { if (innerWidth <= 720 && e.clientX < 75) document.querySelector('.editor-panel').classList.remove('mobile-open'); });
+
+els.authForm.addEventListener('submit', async e => {
+  e.preventDefault();
+  const email = els.authEmail.value.trim().toLowerCase();
+  if (email !== 'gruposlira@gmail.com') { els.authMessage.textContent = 'Use o e-mail autorizado do Grupo Lira.'; return; }
+  els.authMessage.textContent = 'Enviando link seguro…';
+  const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: window.location.origin, shouldCreateUser: true } });
+  els.authMessage.textContent = error ? `Não foi possível enviar: ${error.message}` : 'Link enviado. Abra seu e-mail e clique para entrar.';
+});
+
+function showLoggedOut() {
+  currentUser = null; els.authScreen.classList.remove('hidden'); els.appShell.classList.add('app-locked'); els.appShell.setAttribute('aria-hidden', 'true');
+}
+async function showLoggedIn(session) {
+  currentUser = session?.user || null; if (!currentUser) return showLoggedOut();
+  els.authScreen.classList.add('hidden'); els.appShell.classList.remove('app-locked'); els.appShell.setAttribute('aria-hidden', 'false');
+  try { await loadData(); } catch (error) { console.error(error); setSync('Erro de sincronização', true); }
+}
+
+supabase.auth.onAuthStateChange((_event, session) => { if (session) showLoggedIn(session); else showLoggedOut(); });
+const { data: { session } } = await supabase.auth.getSession();
+if (session) await showLoggedIn(session); else showLoggedOut();
+
+function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+
+</script>
+</body>
+</html>
