@@ -23,7 +23,7 @@
     <p>Entre com o e-mail do Grupo Lira. Você receberá um link seguro para acessar suas notas.</p>
     <form id="authForm">
       <label for="authEmail">E-mail</label>
-      <input id="authEmail" type="email" value="gruposlira@gmail.com" autocomplete="email" required />
+      <input id="authEmail" type="email" placeholder="E-mail autorizado do Grupo Lira" autocomplete="email" required />
       <button class="primary auth-submit" type="submit">Enviar link de acesso</button>
     </form>
     <div id="authMessage" class="auth-message"></div>
@@ -270,7 +270,6 @@ document.querySelector('.editor-toolbar').addEventListener('click', e => { if (i
 els.authForm.addEventListener('submit', async e => {
   e.preventDefault();
   const email = els.authEmail.value.trim().toLowerCase();
-  if (email !== 'gruposlira@gmail.com') { els.authMessage.textContent = 'Use o e-mail autorizado do Grupo Lira.'; return; }
   els.authMessage.textContent = 'Enviando link seguro…';
   const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: window.location.origin, shouldCreateUser: true } });
   els.authMessage.textContent = error ? `Não foi possível enviar: ${error.message}` : 'Link enviado. Abra seu e-mail e clique para entrar.';
