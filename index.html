@@ -155,6 +155,11 @@ window.LIRA_CONFIG = Object.freeze({
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/+esm';
 
+const initialUrl = new URL(window.location.href);
+const passwordResetRequested =
+  initialUrl.searchParams.get('password_reset') === '1' ||
+  initialUrl.hash.includes('type=recovery');
+
 const config = window.LIRA_CONFIG || {};
 if (!config.SUPABASE_URL || !config.SUPABASE_PUBLISHABLE_KEY) {
   throw new Error('Configuração do LIRA NOTES ausente.');
@@ -417,7 +422,9 @@ els.forgotPassword.onclick = async () => {
     return;
   }
   els.authMessage.textContent = 'Enviando e-mail para definir ou recuperar sua senha…';
-  const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin });
+  const resetUrl = new URL(window.location.origin + '/');
+  resetUrl.searchParams.set('password_reset', '1');
+  const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: resetUrl.toString() });
   els.authMessage.textContent = error
     ? `Não foi possível enviar: ${error.message}`
     : 'E-mail enviado. Abra a mensagem e clique no link para definir uma nova senha.';
@@ -434,6 +441,13 @@ function openPasswordModal(recovery = false) {
   els.passwordModal.classList.remove('hidden');
   els.passwordModal.setAttribute('aria-hidden', 'false');
   setTimeout(() => els.newPassword.focus(), 0);
+}
+function clearRecoveryUrl() {
+  const clean = new URL(window.location.href);
+  clean.searchParams.delete('password_reset');
+  clean.searchParams.delete('type');
+  clean.hash = '';
+  history.replaceState({}, '', clean.pathname + (clean.search ? clean.search : ''));
 }
 function closePasswordModal() {
   els.passwordModal.classList.add('hidden');
@@ -461,6 +475,7 @@ els.passwordForm.addEventListener('submit', async e => {
     return;
   }
   els.passwordMessage.textContent = 'Senha salva. A partir de agora você pode entrar com e-mail e senha.';
+  clearRecoveryUrl();
   setTimeout(closePasswordModal, 1200);
 });
 
@@ -479,7 +494,7 @@ supabase.auth.onAuthStateChange((event, session) => {
 });
 const { data: { session } } = await supabase.auth.getSession();
 if (session) await showLoggedIn(session); else showLoggedOut();
-if (session && (window.location.hash.includes('type=recovery') || new URLSearchParams(window.location.search).get('type') === 'recovery')) openPasswordModal(true);
+if (session && passwordResetRequested) openPasswordModal(true);
 
 function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
