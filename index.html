@@ -323,6 +323,7 @@ els.content.oninput = () => updateSelected(n => n.content = sanitizeRichHtml(els
 els.content.addEventListener('click', e => {
   if (e.target instanceof HTMLInputElement && e.target.type === 'checkbox') {
     const item = e.target.closest('.check-item');
+    if (e.target.checked) e.target.setAttribute('checked', ''); else e.target.removeAttribute('checked');
     item?.classList.toggle('done', e.target.checked);
     updateSelected(n => n.content = sanitizeRichHtml(els.content.innerHTML));
   }
@@ -377,7 +378,7 @@ els.authForm.addEventListener('submit', async e => {
   e.preventDefault();
   const email = els.authEmail.value.trim().toLowerCase();
   els.authMessage.textContent = 'Enviando link seguro…';
-  const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: window.location.origin, shouldCreateUser: true } });
+  const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: window.location.origin, shouldCreateUser: false } });
   els.authMessage.textContent = error ? `Não foi possível enviar: ${error.message}` : 'Link enviado. Abra seu e-mail e clique para entrar.';
 });
 
