@@ -1,4 +1,4 @@
-const CACHE='lira-notes-v3';
+const CACHE='lira-notes-v4';
 const ASSETS=['./','./index.html','./manifest.webmanifest'];
 self.addEventListener('install',e=>{
   self.skipWaiting();
