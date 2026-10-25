@@ -39,6 +39,21 @@
 .rich-editor .check-item.done .check-text{text-decoration:line-through;color:var(--muted)}
 @media(max-width:720px){.format-popover{position:fixed;left:16px;right:16px;top:auto;bottom:18px;width:auto}.rich-toolbar{margin-bottom:10px}}
 
+/* scroll resilience v2 */
+html,body{width:100%;overflow:hidden}
+.app-shell{height:100vh;height:100dvh;min-height:0;grid-template-rows:minmax(0,1fr)}
+.sidebar,.note-list-panel,.editor-panel,.editor{min-height:0}
+.sidebar,.note-list-panel,.editor-panel{overflow:hidden}
+.folders{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:var(--muted) transparent}
+.note-list{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:var(--muted) transparent}
+.content-input.rich-editor{flex:1 1 auto;min-height:0;overflow-y:scroll;overflow-x:hidden;overscroll-behavior-y:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;scrollbar-gutter:stable}
+.folders::-webkit-scrollbar,.note-list::-webkit-scrollbar{width:10px}
+.folders::-webkit-scrollbar-track,.note-list::-webkit-scrollbar-track{background:transparent}
+.folders::-webkit-scrollbar-thumb,.note-list::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px;border:2px solid transparent;background-clip:content-box;min-height:36px}
+.folders::-webkit-scrollbar-thumb:hover,.note-list::-webkit-scrollbar-thumb:hover{background:var(--muted);border:2px solid transparent;background-clip:content-box}
+.sidebar-bottom{flex:0 0 auto}
+@media(max-width:720px){.app-shell{height:100dvh}.editor-panel{height:100dvh}.editor{height:100%;min-height:0}}
+
 </style>
 </head>
 <body>
