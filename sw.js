@@ -1,4 +1,4 @@
-const CACHE='lira-notes-v4';
+const CACHE='lira-notes-v5';
 const ASSETS=['./','./index.html','./manifest.webmanifest'];
 self.addEventListener('install',e=>{
   self.skipWaiting();
@@ -12,6 +12,11 @@ self.addEventListener('activate',e=>{
 });
 self.addEventListener('fetch',e=>{
   if(e.request.method!=='GET') return;
+  const url=new URL(e.request.url);
+  if(url.origin!==self.location.origin){
+    e.respondWith(fetch(e.request));
+    return;
+  }
   e.respondWith(
     fetch(e.request).then(r=>{
       const copy=r.clone();
