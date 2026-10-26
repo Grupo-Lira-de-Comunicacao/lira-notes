@@ -575,8 +575,23 @@ async function showLoggedIn(session) {
         await loadData();
         loadedUserId = currentUser.id;
       } catch (error) {
-        console.error(error);
-        setSync('Erro de sincronização', true);
+        console.error('Falha inicial de sincronização:', error);
+        setSync('Reconectando…');
+        const { data: refreshed, error: refreshError } = await supabase.auth.refreshSession();
+        if (!refreshError && refreshed?.session) {
+          try {
+            await loadData();
+            loadedUserId = currentUser.id;
+          } catch (retryError) {
+            console.error('Falha após renovar sessão:', retryError);
+            const code = retryError?.code || retryError?.status || '';
+            setSync(code ? `Erro de sincronização (${code})` : 'Erro de sincronização', true);
+          }
+        } else {
+          console.error('Falha ao renovar sessão:', refreshError);
+          setSync('Sessão expirada — entre novamente', true);
+          await supabase.auth.signOut();
+        }
       } finally {
         workspaceLoadPromise = null;
       }
